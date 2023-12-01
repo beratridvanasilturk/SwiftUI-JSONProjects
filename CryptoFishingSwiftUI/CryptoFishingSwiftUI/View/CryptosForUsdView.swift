@@ -19,29 +19,38 @@ struct CryptosForUsdView: View {
         
         NavigationView {
             List(cryptoListViewModel.cryptoList, id: \.id) { crypto in
-                VStack {
-                    HStack {
-                        Text(crypto.name)
-                            .font(.subheadline)
-                            .bold()
+                ZStack {
+                    //FIXME: Images frame duzeltilmeli
+                    AsyncImage(url: URL(string: crypto.image))
+                        .frame(height: UIScreen.main.bounds.height * 0.03)
+                        .offset(x: 60)
+                        .opacity(0.1)
+                        .padding(33)
+                    VStack {
+                        HStack {
+                            Text(crypto.name)
+                                .font(.subheadline)
+                                .bold()
+                                .foregroundColor(.blue)    
                             
-                        Image(crypto.image)
+                            Text("(\(crypto.symbol))")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
                         
-                        Text("(\(crypto.symbol))")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
                         Text(String(crypto.price))
-                        .font(.caption2)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.largeTitle)
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                .navigationTitle("Cryptos Usd Currency")
             }
-            .onAppear{
-                cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
-            }
+            .navigationTitle("Cryptos Usd Currency")
+        }
+        .onAppear{
+            cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
+        }
     }
 }
 
