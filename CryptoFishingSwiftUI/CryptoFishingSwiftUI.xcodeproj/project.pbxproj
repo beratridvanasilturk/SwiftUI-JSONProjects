@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		EA6D83F32B1A167E00A1B27D /* CryptoFishingSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D83F22B1A167E00A1B27D /* CryptoFishingSwiftUIApp.swift */; };
-		EA6D83F52B1A167E00A1B27D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D83F42B1A167E00A1B27D /* ContentView.swift */; };
+		EA6D83F52B1A167E00A1B27D /* CryptosForUsdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D83F42B1A167E00A1B27D /* CryptosForUsdView.swift */; };
 		EA6D83F72B1A168000A1B27D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6D83F62B1A168000A1B27D /* Assets.xcassets */; };
 		EA6D83FA2B1A168000A1B27D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6D83F92B1A168000A1B27D /* Preview Assets.xcassets */; };
 		EA6D84052B1A18D300A1B27D /* CryptoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D84042B1A18D300A1B27D /* CryptoModel.swift */; };
 		EA6D84072B1A1CC700A1B27D /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D84062B1A1CC700A1B27D /* WebService.swift */; };
+		EA6D84092B1A680200A1B27D /* CryptoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D84082B1A680200A1B27D /* CryptoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA6D83EF2B1A167E00A1B27D /* CryptoFishingSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoFishingSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6D83F22B1A167E00A1B27D /* CryptoFishingSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoFishingSwiftUIApp.swift; sourceTree = "<group>"; };
-		EA6D83F42B1A167E00A1B27D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EA6D83F42B1A167E00A1B27D /* CryptosForUsdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptosForUsdView.swift; sourceTree = "<group>"; };
 		EA6D83F62B1A168000A1B27D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA6D83F92B1A168000A1B27D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EA6D84042B1A18D300A1B27D /* CryptoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModel.swift; sourceTree = "<group>"; };
 		EA6D84062B1A1CC700A1B27D /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		EA6D84082B1A680200A1B27D /* CryptoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,7 @@
 		EA6D84022B1A176F00A1B27D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EA6D83F42B1A167E00A1B27D /* ContentView.swift */,
+				EA6D83F42B1A167E00A1B27D /* CryptosForUsdView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,6 +103,7 @@
 		EA6D84032B1A17B800A1B27D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				EA6D84082B1A680200A1B27D /* CryptoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -176,9 +179,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6D84052B1A18D300A1B27D /* CryptoModel.swift in Sources */,
-				EA6D83F52B1A167E00A1B27D /* ContentView.swift in Sources */,
+				EA6D83F52B1A167E00A1B27D /* CryptosForUsdView.swift in Sources */,
 				EA6D84072B1A1CC700A1B27D /* WebService.swift in Sources */,
 				EA6D83F32B1A167E00A1B27D /* CryptoFishingSwiftUIApp.swift in Sources */,
+				EA6D84092B1A680200A1B27D /* CryptoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

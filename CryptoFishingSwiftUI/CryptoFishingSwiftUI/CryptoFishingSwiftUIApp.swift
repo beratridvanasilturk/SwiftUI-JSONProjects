@@ -11,7 +11,7 @@ import SwiftUI
 struct CryptoFishingSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CryptosForUsdView(cryptoListViewModel: CryptoListViewModel.init())
         }
     }
 }
