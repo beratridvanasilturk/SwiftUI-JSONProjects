@@ -48,9 +48,17 @@ struct CryptosForUsdView: View {
             }
             .navigationTitle("Cryptos Usd Currency")
         }
+        // task'in kendisi async oi onAppear yerine task kullandik
+        .task {
+            await cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
+        }
+        
+        /*
+         // Escaping kullanarak daha cok uikit versiyonu ile backendden veri cekmede kullandik, eskiden kullanilan yontem
         .onAppear{
             cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
         }
+         */
     }
 }
 
