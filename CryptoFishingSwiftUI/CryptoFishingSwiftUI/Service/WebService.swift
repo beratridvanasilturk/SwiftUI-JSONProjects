@@ -8,11 +8,8 @@
 import Foundation
 
 class WebService {
-  
-    
     
     func downloadCurrincies(url: URL) async throws -> [CryptoModel] {
-        
         //URLsession.data 'da tipki escaping versiyonunda dataTask'de oldugu gibi icerisinde data, response ve error'u barindirdigi icin let (data,response) olarak bildirdik ancak hatalari ele almayi burada degerlendirmek istemedigimiz icin let (data, _) seklinde tanimladik
         // fonksiyon async oi await'i kullanmak zorunludur
         // bu bir throwing fonksiyonu yani bir hata firlatabilir oi try kullanmak zorundayiz
@@ -22,7 +19,6 @@ class WebService {
         let currencies = try? JSONDecoder().decode([CryptoModel].self, from: data)
         
         return currencies ?? []
-        
     }
     
     // Escaping kullanarak daha cok uikit versiyonu ile backendden veri cekmede kullandik, eskiden kullanilan yontem
@@ -47,9 +43,7 @@ class WebService {
 }
 
 enum DownloaderError: Error {
-    
     case badUrl
     case noData
     case parsingError
-    
 }

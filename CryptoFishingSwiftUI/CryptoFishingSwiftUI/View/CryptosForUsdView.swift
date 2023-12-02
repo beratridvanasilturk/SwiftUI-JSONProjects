@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CryptosForUsdView: View {
-    
     @ObservedObject var cryptoListViewModel: CryptoListViewModel
     
     init(cryptoListViewModel: CryptoListViewModel) {
@@ -16,11 +15,9 @@ struct CryptosForUsdView: View {
     }
     
     var body: some View {
-        
         NavigationView {
             List(cryptoListViewModel.cryptoList, id: \.id) { crypto in
                 ZStack {
-                    //FIXME: Images frame duzeltilmeli
                     AsyncImage(url: URL(string: crypto.image))
                         .frame(height: UIScreen.main.bounds.height * 0.03)
                         .offset(x: 60)
@@ -31,7 +28,7 @@ struct CryptosForUsdView: View {
                             Text(crypto.name)
                                 .font(.subheadline)
                                 .bold()
-                                .foregroundColor(.blue)    
+                                .foregroundColor(.blue)
                             
                             Text("(\(crypto.symbol))")
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -46,6 +43,13 @@ struct CryptosForUsdView: View {
                     }
                 }
             }
+            .toolbar {
+                Button("Refresh") {
+                    Task.init {
+                        await cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
+                    }
+                }
+            }
             .navigationTitle("Cryptos Usd Currency")
         }
         // task'in kendisi async oi onAppear yerine task kullandik
@@ -55,9 +59,9 @@ struct CryptosForUsdView: View {
         
         /*
          // Escaping kullanarak daha cok uikit versiyonu ile backendden veri cekmede kullandik, eskiden kullanilan yontem
-        .onAppear{
-            cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
-        }
+         .onAppear{
+         cryptoListViewModel.downloadCryptos(url: URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en")!)
+         }
          */
     }
 }

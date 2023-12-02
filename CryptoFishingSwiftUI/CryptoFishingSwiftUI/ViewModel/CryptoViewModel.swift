@@ -15,7 +15,6 @@ class CryptoListViewModel: ObservableObject {
     let webService = WebService()
     
     func downloadCryptos(url: URL) async {
-        
         do {
             let cryptos = try await webService.downloadCurrincies(url: url)
             self.cryptoList = cryptos.map(CryptoViewModel.init)
@@ -28,7 +27,6 @@ class CryptoListViewModel: ObservableObject {
         } catch {
             print(error)
         }
-            
     }
     /*
     // Escaping kullanarak daha cok uikit versiyonu ile backendden veri cekmede kullandik, eskiden kullanilan yontem
