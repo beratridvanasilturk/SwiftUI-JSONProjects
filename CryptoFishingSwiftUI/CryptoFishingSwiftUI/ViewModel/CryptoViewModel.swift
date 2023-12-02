@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class CryptoListViewModel: ObservableObject {
     
     @Published var cryptoList = [CryptoViewModel]()
@@ -17,9 +18,13 @@ class CryptoListViewModel: ObservableObject {
         
         do {
             let cryptos = try await webService.downloadCurrincies(url: url)
-            DispatchQueue.main.async {
-                self.cryptoList = cryptos.map(CryptoViewModel.init)
-            }
+            self.cryptoList = cryptos.map(CryptoViewModel.init)
+            
+            // Bu swift dosyasi icerisindeki tum islemlerin ui'i ilgilendirdigi icin MainActor eklendi, ve cryptoList guncellenmesi otomatikman main'e alinmis oldugu icin dispatchQueue.main.async comment yaptik
+            // Tum islemleri main'de calistirmak istedigimiz zaman ve DispatchQueue'leri dosya icerisinde surekli yazmak zorunda kalmamak icin MainActor kullanisli bir aractir.
+//            DispatchQueue.main.async {
+//                self.cryptoList = cryptos.map(CryptoViewModel.init)
+//            }
         } catch {
             print(error)
         }
