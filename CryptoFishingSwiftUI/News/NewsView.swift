@@ -15,20 +15,29 @@ struct NewsView: View {
             List {
                 ForEach(newsViewModel.articleArray, id: \.self) { content in
                     VStack {
-                        Text(content.title ?? "")
                         //droplast: sondan baslayarak string karakteri silmede kullanildi
-                        Text(content.publishedAt?.dropLast(10) ?? "")
+//                        Text(content.publishedAt?.dropLast(10) ?? "")
                         Text(content.publishedAt?.dropFirst(11).dropLast(4) ?? "")
+                        Text(content.title ?? "")
+                       
+                       
                     }
+                    .frame(width: UIScreen.main.bounds.width * 0.9, alignment: .center)
                     .onTapGesture {
                         UIApplication.shared.open(URL(string: content.url ?? "")!)
                     }
                     
                 }
             }
+            .toolbar {
+                Button("Yenile") {
+                    Task.init {
+                        await newsViewModel.fetchData()
+                    }
+                }
+            }
             .navigationTitle("Daily Science News")
-        }
-        .task {
+        }        .task {
             await newsViewModel.fetchData()
         }
     }
