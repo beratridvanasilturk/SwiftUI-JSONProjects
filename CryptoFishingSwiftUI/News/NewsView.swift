@@ -8,29 +8,26 @@
 import SwiftUI
 
 struct NewsView: View {
-    
     @StateObject var newsViewModel = NewsViewModel()
     
     var body: some View {
         NavigationView{
-            
             List {
-                ForEach(newsViewModel.articleArray, id: \.self) { new in
+                ForEach(newsViewModel.articleArray, id: \.self) { content in
                     VStack {
-                        Text(new.author!)
-                        Text(new.title!)
-                        
+                        Text(content.title ?? "")
+                        //droplast: sondan baslayarak string karakteri silmede kullanildi
+                        Text(content.publishedAt?.dropLast(10) ?? "")
+                        Text(content.publishedAt?.dropFirst(11).dropLast(4) ?? "")
                     }
-//                        .foregroundColor(.black)
-//                    Text(new.source!)
-//                    Text(new.)
-//                    Text(new.url)
+                    .onTapGesture {
+                        UIApplication.shared.open(URL(string: content.url ?? "")!)
+                    }
                     
                 }
             }
-            .navigationTitle("News")
+            .navigationTitle("Daily Science News")
         }
-        
         .task {
             await newsViewModel.fetchData()
         }
